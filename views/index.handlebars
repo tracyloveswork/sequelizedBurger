@@ -1,0 +1,69 @@
+<h1>Eat-Da-Burger!</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-2">
+		</div>
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					
+					<ol>
+						{{#each burger}}
+						{{#unless this.devoured}}
+						<li>
+							<form action="update?_method=PUT" method="POST">
+								<div class="form-group">
+									<label class="control-label">{{this.burger_name}}</label>
+									<input type="hidden" name="burger_id" value={{this.id}}>
+									<button class="btn btn-primary" type="submit">Eat it!</button>
+								</div>
+							</form>
+						</li>
+						{{/unless}}
+						{{/each}}
+					</ol>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<ol>
+						{{#each burgers}}
+						{{#if this.devoured}}
+						<li>
+							
+							<form action="/updateMore?_method=PUT" method="POST">
+								<div class="form-group">
+									<label class="control-label">{{this.burger_name}}</label>
+									<input type="hidden" name="burger_id" value={{this.id}}>
+									<button class="btn btn-primary" type="submit">Get more!</button>
+								</div>
+							</form>
+						</li>
+						{{/if}}
+						{{/each}}
+					</ol>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-3">
+		</div>
+		<div class="col-lg-6">
+			
+			<h2>Enter a burger you would like to eat!</h2>
+			<form class="create-update-form" action="/create" method="POST">
+				<div class="form-group">
+					<input class="form-control" type="text" id="burger_name" name="burger_name" value="">
+				</div>
+				<button class="btn btn-primary" type="submit">Add Burger!</button>
+			</form>
+		</div>
+		<div class="col-lg-3">
+		</div>
+	</div>
+</div>

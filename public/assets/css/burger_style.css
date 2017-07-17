@@ -1,0 +1,22 @@
+body {
+    background: url(/assets/img/imageBurger.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+	font-size: 400%;
+	font-family: 'Alfa Slab One';
+	font-weight: normal;
+	text-align: center;
+	color: white;
+	margin-bottom: 20px;
+}
+
+h2 {
+	color: white !important;
+}
+
+button {
+	float: right;
+}

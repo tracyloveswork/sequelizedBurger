@@ -1,2 +1,4 @@
 # sequelizedBurger
-Sequelize the previous Burger homework
+
+Eat-Da-Burger! Node, Express, Handlebars and Sequelize Homework
+
