@@ -1,7 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
-var path = require("path");
 
 // Set up variable to call express module
 var app = express();
@@ -10,7 +9,7 @@ var app = express();
 db = require("./models");
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + "public"));
+app.use(express.static(__dirname + "/public"));
 
 // Set-up port
 var PORT = process.env.PORT || 3000;
@@ -34,6 +33,9 @@ app.set("view engine", "handlebars");
 var routes = require("./controllers/burgers_controller.js");
 
 app.use("/", routes);
+app.use("/update", routes);
+app.use("/updateMore", routes);
+app.use("/create", routes);
 
 // Listener
 db.sequelize.sync().then(function(){
@@ -42,3 +44,4 @@ db.sequelize.sync().then(function(){
 	});
 });
 
+console.log(module.exports);

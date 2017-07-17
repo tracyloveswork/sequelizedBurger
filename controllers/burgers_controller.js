@@ -9,18 +9,21 @@ var db = require("../models/");
 // Create all our routes and set up logic within those routes where required.
 // Index
 router.get("/", function(req, res){
-// db represents all models in model folder and Burger is defined/exported from burger.js
+  res.redirect("/burgers");
+});
+
+router.get("/burgers", function(req, res) { 
+  // db represents all models in model folder and Burger is defined/exported from burger.js
   db.Burger.findAll()
   // Promise here
   .then(function(dbBurger){
     console.log(dbBurger);
     var hbsObject = { burger: dbBurger };
-    res.render("index", hbsObject);
+    return res.render("index", hbsObject);
 }).catch(function(err) {
         console.log("Error Message: " + err);
         res.send("You got an error!");
     });
-
   // mySql version of same
   // burger.selectAll(function(data) {
   //   var hbsObject = {
@@ -32,9 +35,9 @@ router.get("/", function(req, res){
 });
 
 // Insert one
-router.post("/create", function(req, res) {
+router.post("/burgers/create", function(req, res) {
 
-  db.Buger.create({
+  db.Burger.create({
     burger_name: req.body.burger_name
   }).then(function(dbBurger){
     console.log(dbBurger);
@@ -54,7 +57,7 @@ router.post("/create", function(req, res) {
 
 
 // Update to devoured:true
-router.put("/update", function(req, res) {
+router.put("/burgers/update", function(req, res) {
   db.Burger.update({
     devoured: true
   },
@@ -68,7 +71,7 @@ router.put("/update", function(req, res) {
 });
 
 // Update to devoured:false
-router.put("/updateMore", function(req, res) {
+router.put("/burgers/updateMore", function(req, res) {
   db.Burger.update({
     devoured: false
   },

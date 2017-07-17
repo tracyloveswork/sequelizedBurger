@@ -11,7 +11,7 @@
 						{{#each burger}}
 						{{#unless this.devoured}}
 						<li>
-							<form action="update?_method=PUT" method="POST">
+							<form action="/burgers/update?_method=PUT" method="POST">
 								<div class="form-group">
 									<label class="control-label">{{this.burger_name}}</label>
 									<input type="hidden" name="burger_id" value={{this.id}}>
@@ -29,11 +29,11 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<ol>
-						{{#each burgers}}
+						{{#each burger}}
 						{{#if this.devoured}}
 						<li>
 							
-							<form action="/updateMore?_method=PUT" method="POST">
+							<form action="/burgers/updateMore?_method=PUT" method="POST">
 								<div class="form-group">
 									<label class="control-label">{{this.burger_name}}</label>
 									<input type="hidden" name="burger_id" value={{this.id}}>
@@ -56,9 +56,9 @@
 		<div class="col-lg-6">
 			
 			<h2>Enter a burger you would like to eat!</h2>
-			<form class="create-update-form" action="/create" method="POST">
+			<form class="create-update-form" action="/burgers/create" method="POST">
 				<div class="form-group">
-					<input class="form-control" type="text" id="burger_name" name="burger_name" value="">
+					<input class="form-control" type="text" id="enter_text" name="burger_name" value="">
 				</div>
 				<button class="btn btn-primary" type="submit">Add Burger!</button>
 			</form>
